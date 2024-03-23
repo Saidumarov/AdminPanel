@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "./index.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const Add = () => {
   const navigation = useNavigate();
+  const [products, setProducts] = useState([]);
   const [product, setProduct] = useState({
     title: "",
     brand: "",
@@ -18,12 +19,23 @@ const Add = () => {
     navigation("/");
   };
 
+  useEffect(() => {
+    const fetchData = () => {
+      axios.get("http://localhost:3000/products").then((res) => {
+        const products = res.data;
+        setProducts(products);
+      });
+    };
+    fetchData();
+  }, []);
+
   const hendelChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value.trim() });
   };
 
   const save = async () => {
-    await axios.post("http://localhost:3000/products", product).then((res) => {
+    const newData = { ...product, id: products.length + 1 + "" };
+    await axios.post("http://localhost:3000/products", newData).then((res) => {
       console.log(res.data);
       closeBtn();
       toast.success("Товар успешно добавлен");

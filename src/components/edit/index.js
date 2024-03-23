@@ -8,6 +8,7 @@ const Edit = () => {
   const navigation = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState({
+    id: "",
     title: "",
     brand: "",
     stock: "",
@@ -29,6 +30,7 @@ const Edit = () => {
         .then((res) => {
           const product = res.data;
           setProduct({
+            id: product.id,
             title: product.title,
             brand: product.brand,
             stock: product.stock,
