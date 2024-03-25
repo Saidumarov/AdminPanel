@@ -26,7 +26,7 @@ const Edit = () => {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`http://localhost:3000/products/${id}`)
+        .get(`https://crud-product-sla6.onrender.com/products/${id}`)
         .then((res) => {
           const product = res.data;
           setProduct({
@@ -48,7 +48,7 @@ const Edit = () => {
 
   const editSave = () => {
     axios
-      .put(`http://localhost:3000/products/${id}`, product)
+      .put(`https://crud-product-sla6.onrender.com/products/${id}`, product)
       .then((res) => {
         closeBtn();
         toast.success("Товар успешно изменен");

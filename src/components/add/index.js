@@ -21,10 +21,12 @@ const Add = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get("http://localhost:3000/products").then((res) => {
-        const products = res.data;
-        setProducts(products);
-      });
+      axios
+        .get("https://crud-product-sla6.onrender.com/products")
+        .then((res) => {
+          const products = res.data;
+          setProducts(products);
+        });
     };
     fetchData();
   }, []);
@@ -35,11 +37,13 @@ const Add = () => {
 
   const save = async () => {
     const newData = { ...product, id: products.length + 1 + "" };
-    await axios.post("http://localhost:3000/products", newData).then((res) => {
-      console.log(res.data);
-      closeBtn();
-      toast.success("Товар успешно добавлен");
-    });
+    await axios
+      .post("https://crud-product-sla6.onrender.com/products", newData)
+      .then((res) => {
+        console.log(res.data);
+        closeBtn();
+        toast.success("Товар успешно добавлен");
+      });
   };
 
   return (

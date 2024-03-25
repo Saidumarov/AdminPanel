@@ -33,7 +33,7 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get("http://localhost:3000/products")
+        .get("https://crud-product-sla6.onrender.com/products")
         .then((res) => {
           setData(res?.data);
           setorginalData(res?.data);
