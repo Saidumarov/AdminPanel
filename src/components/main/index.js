@@ -33,7 +33,7 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get("https://dummyjson.com/products")
+        .get("http://localhost:3000/products")
         .then((res) => {
           setData(res?.data);
           setorginalData(res?.data);

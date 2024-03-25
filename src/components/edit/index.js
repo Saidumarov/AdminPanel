@@ -26,7 +26,7 @@ const Edit = () => {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`https://dummyjson.com/products/${id}`)
+        .get(`http://localhost:3000/products/${id}`)
         .then((res) => {
           const product = res.data;
           setProduct({
@@ -48,7 +48,7 @@ const Edit = () => {
 
   const editSave = () => {
     axios
-      .put(`https://dummyjson.com/products/${id}`, product)
+      .put(`http://localhost:3000/products/${id}`, product)
       .then((res) => {
         closeBtn();
         toast.success("Товар успешно изменен");
