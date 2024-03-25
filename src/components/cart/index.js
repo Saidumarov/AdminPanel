@@ -18,7 +18,7 @@ const Cart = ({
   const navegation = useNavigate();
   const deleteProduct = (id) => {
     if (window.confirm("Вы действительно хотите удалить товар")) {
-      axios.delete(`http://localhost:3000/products/${id}`);
+      axios.delete(`https://dummyjson.com/products/${id}`);
       toast.success("Товар удален");
       data(true);
     }
